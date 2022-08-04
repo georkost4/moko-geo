@@ -41,6 +41,10 @@ actual class LocationTracker(
     private val extendedLocationsChannel = Channel<ExtendedLocation>(Channel.CONFLATED)
     private val trackerScope = CoroutineScope(Dispatchers.Main)
 
+    fun setLocationClient(client: FusedLocationProviderClient) {
+        locationProviderClient = client
+    }
+
     fun bind(lifecycle: Lifecycle, context: Context, fragmentManager: FragmentManager) {
         permissionsController.bind(lifecycle, fragmentManager)
 
